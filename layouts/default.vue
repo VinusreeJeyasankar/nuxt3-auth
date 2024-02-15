@@ -35,10 +35,11 @@
                   </li>
                 </ul>
               </li> -->
-              <li class="nav-item">
-                <NuxtLink class="nav-link loginBtn" to="/login"> Login
-                  <!-- <button class="btn btn-warning">Sign Up</button> -->
-                </NuxtLink>
+              <li v-if="!authenticated" class="nav-item">
+                <NuxtLink class="nav-link loginBtn" to="/login"> Login</NuxtLink>
+              </li>
+              <li v-if="authenticated" class="nav-item">
+                <NuxtLink @click="logout" class="nav-link" to="/login"> Logout</NuxtLink>
               </li>
               <li class="nav-item">
                 <NuxtLink class="nav-link" to="/signup">
@@ -58,6 +59,22 @@
     </footer> -->
   </div>
 </template>
+<script lang="ts" setup>
+import { storeToRefs } from 'pinia'; // import storeToRefs helper hook from pinia
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '../store/auth';
+
+const router = useRouter();
+
+
+const { logUserOut } = useAuthStore(); // use authenticateUser action from  auth store
+const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive with storeToRefs
+
+const logout = () => {
+  logUserOut();
+  router.push('/login');
+};
+</script>
 <style scoped>
   nav {
     background-color: #333;
