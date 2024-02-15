@@ -18,12 +18,14 @@
         <div class="d-flex flex-column justify-content-between">
           <label htmlFor="uname" class="form-label">
             Username
-            <input v-model="user.username" id="uname" type="text" class="form-control" placeholder="Enter Username" autocomplete="on" required />
+            <input v-model="user.username" id="uname" type="text" class="form-control" placeholder="Enter Username"
+              autocomplete="on" required />
             <div class="invalid-feedback">Invalid username.</div>
           </label>
           <label htmlFor="psw" class="form-label">
             Password
-            <input v-model="user.password" id="psw" type="password" class="form-control" placeholder="Enter Password" autocomplete="on" required />
+            <input v-model="user.password" id="psw" type="password" class="form-control" placeholder="Enter Password"
+              autocomplete="on" required />
             <div class="invalid-feedback">Invalid password.</div>
           </label>
           <button @click.prevent="login" class="btn btn-outline-primary mt-2" type="button">
@@ -43,8 +45,8 @@ const { authenticateUser } = useAuthStore(); // use authenticateUser action from
 const { authenticated } = storeToRefs(useAuthStore()); // make authenticated state reactive with storeToRefs
 
 const user = ref({
-  username: 'kminchelle',
-  password: '0lelplR',
+  username: '',
+  password: '',
 });
 const router = useRouter();
 
@@ -68,7 +70,7 @@ const login = async () => {
   background-color: #ffffff;
   box-shadow: 8px 8px 8px 8px #dbd9d9;
 }
-::placeholder{
+
+::placeholder {
   color: #c8c6c6;
-}
-</style>
+}</style>

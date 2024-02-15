@@ -64,13 +64,13 @@ const submitForm = () => {
     };
 
     // Retrieve existing user details from localStorage
-    const existingUserDetails = JSON.parse(localStorage.getItem('user-details')) || [];
+    const existingUserDetails = JSON.parse(localStorage.getItem('registered-users')) || [];
 
     // Add the new user details to the existing ones
     existingUserDetails.push(userDetails);
 
     // Set the updated user details back in localStorage
-    localStorage.setItem('user-details', JSON.stringify(existingUserDetails));
+    localStorage.setItem('registered-users', JSON.stringify(existingUserDetails));
 
     // Update the store with the new user details
     formStore.setUserDetails(userDetails);
